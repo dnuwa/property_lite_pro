@@ -12,7 +12,7 @@
 
 html{
     box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: courier;
     /* color: var(--dark); */
 }
 
@@ -156,6 +156,57 @@ footer{
     padding: 1rem;
 }
 
+input[type=text],
+input[type=email],
+input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: courier;
+}
+
+.signup-form{
+    display: grid;
+    grid-template-columns:repeat(2, 1fr);
+    grid-gap: 2rem;
+    padding: 2rem;
+    background: var(--primary);
+    box-shadow: var(--shadow);
+}
+
+.txt-section{
+    font-size: 30px;
+    font-style: italic;
+    color: rgb(59, 185, 200);
+    text-align: center;
+
+    margin: auto;
+}
+
+.txt-section p {
+    font-size:20px;
+    font-weight: bolder;
+}
+
+.txt-section h3 {
+    padding: 0 0 10px 0;
+}
+
+.form-section button{
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(59, 185, 200);
+    color: white;
+}
+
+.form-section p{
+    font-size: 15px;
+    font-weight: bold;
+}
+
 @media(max-width: 700px){
     .top-container{
         grid-template-areas:
@@ -179,6 +230,9 @@ footer{
         display: block;
         text-align: center;
         margin:auto;
+    }
+    .signup-form{
+        grid-template-columns: 1fr;
     }
 }
 
