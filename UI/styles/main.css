@@ -12,7 +12,7 @@
 
 html{
     box-sizing: border-box;
-    font-family: arial;
+    font-family: Poppins;
 }
 
 body{
@@ -81,6 +81,16 @@ p{
     margin-top:5px;
 }
 
+.box .del{
+    background-color: red;
+    border: red;
+}
+
+.box .edit{
+    background-color: rgb(4, 146, 39);
+    border: rgb(0, 255, 64);
+}
+
 img{
     max-width: 100%;
 }
@@ -93,14 +103,14 @@ img{
 .nav-bar{
     display: grid;
     grid-gap:20px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     list-style: none;
     padding: 30px;
     background-color:white;
     box-shadow: 1px 9px 13px -16px;
-    width: 100%;
+    width: -webkit-fill-available;
     position: fixed;
-
+    /* border:solid 1px; */
 }
 
 .nav-bar ul{
@@ -114,22 +124,29 @@ img{
 
 .nav-bar li a{
     text-decoration: none;
-    color: rgb(59, 185, 200);
+    color: #000000;
+    font-size: 17.6px;
+    font-weight: 600px;
 }
 
 .nav-bar li :hover{
-    color: grey;
+    border-bottom: 3px solid #2eca6a;
 }
 
 .logo{
     font-weight: bolder;
-    font-size: 30px;
+    font-size: 34px;
     padding-left: 30px;
-    color:green;
+    color:#2eca6a;
+}
+
+.nav-bar .logo :hover{
+    color:#2eca6a;
+    cursor: pointer;
 }
 
 .logo span{
-    color:rgb(0,0,0);
+    color:#000000;
     letter-spacing: 0px;
 }
 
@@ -241,7 +258,7 @@ input[type=password] {
     font-weight: bold;
 }
 
-@media(max-width: 700px){
+@media(max-width: 768px){
 
     .info{
         grid-template-columns: 1fr;
@@ -259,7 +276,7 @@ input[type=password] {
 
     .nav-bar{
         grid-template-columns: 1fr;
-        width: 85%;
+        /* width: 85%; */
     }
     .nav-bar ul{
         display: grid;
