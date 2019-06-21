@@ -258,6 +258,38 @@ input[type=password] {
     font-weight: bold;
 }
 
+.bg-modal {
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: -webkit-fill-available;
+	position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.modal-content{
+    width: 500px;
+    height: 340px;
+    background: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    margin: 2%;
+}
+
+.close{
+    position: absolute;
+    top:0;
+    right: 14px;
+    font-size:42px;
+    transform:rotate(45deg);
+    cursor: pointer;
+}
+
 @media(max-width: 768px){
 
     .info{
