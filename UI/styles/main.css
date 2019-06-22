@@ -1,7 +1,7 @@
 /* CSS Variables */
 :root{
     --primary:#fff;
-    --dark:rgb(59, 185, 200);
+    --dark:rgb(4, 146, 39);
     --light: rgb(248, 251, 251);
     --shadow:0 1px 5px rgba(104, 104, 104, 104);
 }
@@ -31,7 +31,7 @@ body{
     border-radius: 5px;
     margin: 2%;
     background-color: white;
-    border-color:rgb(59, 185, 200)
+    border-color:rgb(0, 255, 64);
     }
 
 .card:hover{
@@ -57,26 +57,33 @@ body{
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     }
+
 button{
     margin-top: 20px;
     margin-bottom: 10px;
     background-color: white;
-    border: 1px solid rgb(59, 185, 200);
-    border-radius: 5px;
-    padding:10px;
+    border: 1px solid rgb(0, 183, 255);
+    border-radius: 20px;
+    padding: 10px 15px;
 }
 button:hover{
-    background-color: rgb(59, 185, 200);
+    background-color: rgb(14, 186, 238);
     color: white;
-    transition: .5s;
+    transition: .2s;
     cursor: pointer;
 }
+
+button:focus {
+    outline: none;
+  }
+
 p{
-    font-size: 12px;
+    font-size: 15px;
+    padding:8px 0;
 }
 
 .box button{
-    background-color:rgb(59, 185, 200);
+    background-color: rgb(14, 186, 238);
     color:white;
     margin-top:5px;
 }
@@ -110,7 +117,6 @@ img{
     box-shadow: 1px 9px 13px -16px;
     width: -webkit-fill-available;
     position: fixed;
-    /* border:solid 1px; */
 }
 
 .nav-bar ul{
@@ -129,8 +135,9 @@ img{
     font-weight: 600px;
 }
 
-.nav-bar li :hover{
+.nav-bar ul :hover{
     border-bottom: 3px solid #2eca6a;
+    cursor: pointer;
 }
 
 .logo{
@@ -184,31 +191,21 @@ img{
 
 input[type=text],
 input[type=email],
+input[type=file],
+input[type=submit],
 input[type=password] {
     width: 100%;
     padding: 12px 20px;
-    margin: 5px 0;
+    /* margin: 12px 0; */
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    font-family: courier;
-}
-
-.form-wrapper{
-    display: grid;
-    grid-template-columns:repeat(2, 1fr);
-    grid-gap: 2rem;
-    padding: 2rem;
-    background: var(--primary);
-    box-shadow: var(--shadow);
-    margin: 150px 50px 50px;
-
 }
 
 .form-section form{
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 20px;
+    grid-gap: 10px;
 }
 
 .form-section form .full{
@@ -219,75 +216,49 @@ input[type=password] {
     width: 100%;
 }
 
-.txt-section{
-    font-size: 30px;
-    font-style: italic;
-    color: rgb(59, 185, 200);
-    text-align: center;
-    margin: auto;
-}
-
-.txt-section p {
-    font-size:20px;
-    font-weight: bolder;
-}
-
-.txt-section h3 {
-    padding: 0 0 10px 0;
-}
-
-.form-section{
-    margin: auto;
-    width: 100%;
-}
-
-.form-section h3{
-    padding: 0 0 30px;
-    text-align: center;
-}
-
-.form-section button{
-    width: 100%;
-    padding: 12px;
-    background-color: rgb(59, 185, 200);
-    color: white;
-}
-
-.form-section p{
-    font-size: 15px;
-    font-weight: bold;
-}
-
-.bg-modal {
+.bg-modal, .bg-modal-signup, .bg-modal-advert, .bg-modal-edit{
 	background-color: rgba(0, 0, 0, 0.8);
 	width: 100%;
 	height: -webkit-fill-available;
-	position: absolute;
     top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     display: none;
+    position: fixed;
 }
 
-.modal-content{
+.modal-content, .modal-content-signup, .modal-content-advert, .modal-content-edit{
     width: 500px;
-    height: 340px;
+    height: auto;
     background: white;
     border-radius: 4px;
-    text-align: center;
     padding: 20px;
     position: relative;
-    margin: 2%;
+    text-align: center;
 }
 
-.close{
+.bg-modal img, .bg-modal-signup img, .bg-modal-advert img, .bg-modal-edit img{
+    height: 100px;
+}
+
+.modal-content p, .modal-content-signup p, .modal-content-advert p, .modal-content-edit p{
+    text-align: left;
+}
+
+.link{
+    text-align: center;
+}
+
+.close, .close-signup, .close-advert, .close-edit{
     position: absolute;
     top:0;
     right: 14px;
     font-size:42px;
     transform:rotate(45deg);
     cursor: pointer;
+    color: red;
+    font-weight: bolder;
 }
 
 @media(max-width: 768px){
@@ -308,7 +279,6 @@ input[type=password] {
 
     .nav-bar{
         grid-template-columns: 1fr;
-        /* width: 85%; */
     }
     .nav-bar ul{
         display: grid;

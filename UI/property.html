@@ -17,14 +17,17 @@
                 <li>
                     <a href="index.html">Buy/Rent</a>
                 </li>
-                <li>
-                    <a href="advert.html">Advertise</a>
+                <li id="advertise">
+                    <!-- <a href="advert.html">Advertise</a> -->
+                    Advertise
                 </li>
-                <li>
-                    <a href="signup.html">Signup</a>
+                <li id="signup">
+                    <!-- <a href="signup.html">Signup</a> -->
+                    Signup
                 </li>
-                <li>
-                    <a href="login.html">Login</a>
+                <li id="login">
+                    <!-- <a href="login.html">Login</a> -->
+                    Login
                 </li>
             </ul>
             <div class="search-form">
@@ -57,21 +60,157 @@
 
     </div>
     <!-- Wrapper Ends-->
+    <div class="bg-modal-edit">
+        <div class="modal-content-edit">
+            <div class="close-edit">+</div>
+            <div class="form-section">
+                <img src="images/house_avatar.ico" alt="house_avatar">
+                <form action="">
+                    <p>
+                        <label for="">Title</label>
+                        <input type="text" name="type"
+                            placeholder="10 BEDROOMS FURNISHED HOUSE FOR RENTING IN KICUKIRO">
+                    </p>
+                    <p>
+                        <label for="">Type</label>
+                        <input type="text" name="type" placeholder="Rental/Sale">
+                    </p>
+                    <p>
+                        <label for="">District</label>
+                        <input type="text" name="text" placeholder="kampala">
+                    </p>
+                    <p>
+                        <label for="">Location</label>
+                        <input type="text" name="text" placeholder="central division">
+                    </p>
+                    <p>
+                        <label for="">Number of rooms</label>
+                        <input type="text" name="text" placeholder="3">
+                    </p>
+                    <p>
+                        <label for="">Price</label>
+                        <input type="text" name="text" placeholder="$1000">
+                    </p>
+                    <p class="full">
+                        <label for="">Description</label>
+                        <textarea name="message" rows="5"></textarea>
+                    </p>
+
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <input type="submit" value="Upload Image" name="submit">
+
+                    <button>Submit</button>
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
     <div class="bg-modal">
         <div class="modal-content">
             <div class="close">+</div>
-            <img src="" alt="">
+            <img src="images/user_avatar.png" alt="user_avatar">
             <form action="">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <input type="text">
-                <!-- <a href="" class="button">Submit</a> -->
+                <p>
+                    <label for="">Email Address</label>
+                    <input type="email" name="email" placeholder="john.deo@hotmail.com">
+                </p>
+                <p>
+                    <label for="">Password</label>
+                    <input type="password" name="password" placeholder="********">
+                </p>
                 <button>Submit</button>
             </form>
+            <div class="link">Don't have an account?<a href="index.html">Sign Up</a></div>
+        </div>
+    </div>
+
+    <div class="bg-modal-signup">
+        <div class="modal-content-signup">
+            <div class="close-signup">+</div>
+            <img src="images/user_avatar.png" alt="user_avatar">
+            <form action="">
+
+                <p>
+                    <label for="">First Name</label>
+                    <input type="text" name="firstname" placeholder="John">
+                </p>
+                <p>
+                    <label for="">Last Name</label>
+                    <input type="text" name="lastname" placeholder="Doe">
+                </p>
+                <p>
+                    <label for="">Phone Number</label>
+                    <input type="text" name="phonenumber" placeholder="(+250) 555-555">
+                </p>
+                <p>
+                    <label for="">Address</label>
+                    <input type="text" name="address" placeholder="colivile street plot 21, kigali - Rwanda">
+                </p>
+                <p>
+                    <label for="">Email Address</label>
+                    <input type="email" name="email" placeholder="john.deo@hotmail.com">
+                </p>
+                <p>
+                    <label for="">Password</label>
+                    <input type="password" name="password" placeholder="********">
+                </p>
+                <button>Submit</button>
+            </form>
+            <div class="link">Already have an account? <a href="index.html">Log In</a></div>
+        </div>
+    </div>
+
+    <div class="bg-modal-advert">
+        <div class="modal-content-advert">
+            <div class="close-advert">+</div>
+            <div class="form-section">
+                <img src="images/house_avatar.ico" alt="house_avatar">
+                <form action="">
+                    <p>
+                        <label for="">Title</label>
+                        <input type="text" name="type"
+                            placeholder="10 BEDROOMS FURNISHED HOUSE FOR RENTING IN KICUKIRO">
+                    </p>
+                    <p>
+                        <label for="">Type</label>
+                        <input type="text" name="type" placeholder="Rental/Sale">
+                    </p>
+                    <p>
+                        <label for="">District</label>
+                        <input type="text" name="text" placeholder="kampala">
+                    </p>
+                    <p>
+                        <label for="">Location</label>
+                        <input type="text" name="text" placeholder="central division">
+                    </p>
+                    <p>
+                        <label for="">Number of rooms</label>
+                        <input type="text" name="text" placeholder="3">
+                    </p>
+                    <p>
+                        <label for="">Price</label>
+                        <input type="text" name="text" placeholder="$1000">
+                    </p>
+                    <p class="full">
+                        <label for="">Description</label>
+                        <textarea name="message" rows="5"></textarea>
+                    </p>
+
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <input type="submit" value="Upload Image" name="submit">
+
+                    <button>Submit</button>
+
+                </form>
+
+            </div>
 
         </div>
+    </div>
+    </div>
+
     </div>
     <script src='scripts/main.js'></script>
 </body>
