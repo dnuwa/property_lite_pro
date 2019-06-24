@@ -36,6 +36,10 @@ body{
     border-color:rgb(0, 255, 64);
     }
 
+.card button{
+    margin: 20px;
+}
+
 .card:hover{
     box-shadow: var(--shadow);
 }
@@ -60,8 +64,6 @@ body{
     }
 
 button{
-    margin-top: 20px;
-    margin-bottom: 10px;
     background-color: white;
     border: 1px solid rgb(0, 183, 255);
     border-radius: 20px;
@@ -217,6 +219,14 @@ input[type=password] {
     width: 100%;
 }
 
+.form-section form .full button{
+    width: 100%;
+}
+
+.modal-content button{
+    width: 100%;
+}
+
 .bg-modal, .bg-modal-signup, .bg-modal-advert, .bg-modal-edit{
 	background-color: rgba(0, 0, 0, 0.8);
 	width: 100%;
@@ -287,17 +297,9 @@ footer p {
         text-align: center;
         margin:auto;
     }
-    .form-wrapper{
-        grid-template-columns: 1fr;
-        grid-gap: 10px;
-    }
 
     .nav-bar{
         grid-template-columns: 1fr;
-    }
-
-    .form-wrapper, .main, .info{
-        margin: 230px 50px 50px;
     }
 
     .main{
@@ -311,10 +313,6 @@ footer p {
 
     button{
         width: 100%;
-    }
-
-    .bg-modal-signup img{
-        height: 50px;
     }
 }
 
