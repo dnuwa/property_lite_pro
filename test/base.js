@@ -59,3 +59,13 @@ exports.signup_user_6 = {
   address: 'plot 27 bukto street',
   isAdmin: true,
 };
+
+exports.login_user_1 = {
+  email: 'nuwa123@gmail.com',
+  password: 'secretstring2',
+};
+
+exports.login_user_2 = {
+  email: 'nuwa123@gmail.com',
+  password: 'secretstring123',
+};
