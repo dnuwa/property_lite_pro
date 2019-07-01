@@ -80,5 +80,17 @@ describe.only('Create an advert ', () => {
             });
         });
     });
+
+    it('should return all adverts in an array', (done) => {
+      chai.request(BASE_URL)
+        .get('/property')
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.should.have.property('status');
+          res.body.should.have.property('data');
+          done();
+        });
+    });
   });
 });

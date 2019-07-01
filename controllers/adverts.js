@@ -56,3 +56,8 @@ exports.createAdvert = (req, res) => {
     },
   });
 };
+
+exports.allAdverts = (req, res) => res.status(200).json({
+  status: 200,
+  data: adverts,
+});
