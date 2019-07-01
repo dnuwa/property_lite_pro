@@ -9,5 +9,6 @@ router.route('/auth/signup').get(signupController.allUsers);
 router.route('/auth/signin').post(signinController.signin);
 router.route('/property').post(middleware.verifyToken, advertController.createAdvert);
 router.route('/property').get(advertController.allAdverts);
+router.route('/property/:propertyId').get(advertController.singleAdvert);
 
 module.exports = router;
