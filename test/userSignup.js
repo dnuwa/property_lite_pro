@@ -113,5 +113,17 @@ describe.only('user signup', () => {
           done();
         });
     });
+
+    it('should return all users in an array', (done) => {
+      chai.request(BASE_URL)
+        .get(SIGNUP_URL)
+        .end((err, res) => {
+          res.should.have.status(200);
+          res.body.should.be.a('object');
+          res.body.should.have.property('status');
+          res.body.should.have.property('data');
+          done();
+        });
+    });
   });
 });

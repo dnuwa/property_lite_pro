@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 const users = [];
-// module.exports = users;
+const adverts = [];
 
 module.exports = {
-  // eslint-disable-next-line prettier/prettier
   users,
+  adverts,
 };

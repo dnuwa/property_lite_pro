@@ -60,6 +60,16 @@ exports.signup_user_6 = {
   isAdmin: true,
 };
 
+exports.signup_user_7 = {
+  email: 'nuwa1234@gmail.com',
+  firstName: 'daniel',
+  lastName: 'nuwa',
+  password: 'secretstring2',
+  phoneNumber: '+256701354725',
+  address: 'plot 27 bukto street',
+  isAdmin: false,
+};
+
 exports.login_user_1 = {
   email: 'nuwa123@gmail.com',
   password: 'secretstring2',
@@ -68,4 +78,14 @@ exports.login_user_1 = {
 exports.login_user_2 = {
   email: 'nuwa123@gmail.com',
   password: 'secretstring123',
+};
+
+exports.advert_1 = {
+  status: 'available',
+  type: 'flat',
+  state: 'available',
+  city: 'kampala',
+  address: 'bukoto street',
+  price: '10000000',
+  imageUrl: 'https://cdn-images-1.medium.com/max/1200/1*RKZ5NBNqwlLXA6vewu7xmw.jpeg',
 };
