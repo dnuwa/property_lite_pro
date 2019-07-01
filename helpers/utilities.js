@@ -1,6 +1,7 @@
+/* eslint-disable no-plusplus */
 /* eslint-disable consistent-return */
 /* eslint-disable prettier/prettier */
-const { users } = require('../models');
+const { users, adverts } = require('../models');
 
 // Current user data
 exports.currentUser = (id) => {
@@ -28,5 +29,14 @@ exports.checkUserType = (userData, res) => {
       status: 401,
       error: 'Token is expired, please login again!',
     });
+  }
+};
+
+// return an object of a provided advertId
+exports.checkadvert = (id) => {
+  for (let i = 0; i < adverts.length; i++) {
+    if (adverts[i].propertyId === Number(id)) {
+      return adverts[i];
+    }
   }
 };

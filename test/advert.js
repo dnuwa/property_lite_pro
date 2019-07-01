@@ -92,5 +92,29 @@ describe.only('Create an advert ', () => {
           done();
         });
     });
+
+    it('should return a single advert', (done) => {
+      chai.request(BASE_URL)
+        .get('/property/1')
+        .end((err, response) => {
+          response.should.have.status(200);
+          response.body.should.be.a('object');
+          response.body.should.have.property('status');
+          response.body.should.have.property('data');
+          done();
+        });
+    });
+
+    it('should raise an error if advert not found', (done) => {
+      chai.request(BASE_URL)
+        .get('/property/1000')
+        .end((err, response) => {
+          response.should.have.status(400);
+          response.body.should.be.a('object');
+          response.body.should.have.property('status');
+          response.body.should.have.property('data');
+          done();
+        });
+    });
   });
 });
