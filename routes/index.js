@@ -3,6 +3,7 @@ const signupController = require('../controllers/signup');
 const signinController = require('../controllers/signin');
 const advertController = require('../controllers/adverts');
 const addeleteController = require('../controllers/deleteAdvert');
+const searchController = require('../controllers/searchAdverts');
 const middleware = require('../middleware');
 
 router.route('/auth/signup').post(signupController.signup);
@@ -14,5 +15,7 @@ router
   .route('/property/:propertyId')
   .get(advertController.singleAdvert)
   .delete(middleware.verifyToken, addeleteController.deleteAdvert);
+
+router.route('/property/type/:type').get(searchController.searchAdvert);
 
 module.exports = router;
