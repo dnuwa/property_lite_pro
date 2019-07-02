@@ -28,7 +28,7 @@ exports.deleteAdvert = (req, res) => {
   }
 
   // Delete only if you are the creator of the advert
-  if (loggedinUser.id !== advertToDelete.staffId) {
+  if (loggedinUser.id !== advertToDelete.created_by_staffId) {
     return res.status(401).json({
       status: 401,
       error: `you are not authorised to delete proprty Id: ${propertyId}`,
@@ -38,7 +38,7 @@ exports.deleteAdvert = (req, res) => {
   // Check for advert with the provided propertyid
   let index = null;
   adverts.forEach((advert, i) => {
-    if (advert.propertyId === Number(propertyId)) {
+    if (advert.id === Number(propertyId)) {
       index = i;
     }
   });
