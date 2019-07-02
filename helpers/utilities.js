@@ -33,7 +33,7 @@ exports.checkUserType = (userData, res) => {
 };
 
 // return an object of a provided advertId
-exports.checkadvert = (id) => {
+exports.checkAdvert = (id) => {
   for (let i = 0; i < adverts.length; i++) {
     if (adverts[i].propertyId === Number(id)) {
       return adverts[i];
