@@ -1,7 +1,7 @@
 /* eslint-disable consistent-return */
 /* eslint-disable prettier/prettier */
 const { adverts } = require('../models');
-const { checkUserType, currentUser, checkadvert } = require('../helpers/utilities');
+const { checkUserType, currentUser, checkAdvert } = require('../helpers/utilities');
 
 const datetime = new Date();
 
@@ -65,7 +65,7 @@ exports.allAdverts = (req, res) => res.status(200).json({
 exports.singleAdvert = (req, res) => {
   const { params: { propertyId } } = req;
 
-  const advertObj = checkadvert(propertyId);
+  const advertObj = checkAdvert(propertyId);
   if (!advertObj) {
     return res.status(400).json({
       status: 400,
