@@ -1,5 +1,5 @@
 # property_lite_pro
-[![Build Status](https://travis-ci.org/dnuwa/property_lite_pro.svg?branch=develop)](https://travis-ci.org/dnuwa/property_lite_pro)              [![Coverage Status](https://coveralls.io/repos/github/dnuwa/property_lite_pro/badge.svg?branch=develop)](https://coveralls.io/github/dnuwa/property_lite_pro?branch=develop)                [![Maintainability](https://api.codeclimate.com/v1/badges/f160b5ab4d0c6f05ccab/maintainability)](https://codeclimate.com/github/dnuwa/property_lite_pro/maintainability)
+[![Build Status](https://travis-ci.org/dnuwa/property_lite_pro.svg?branch=develop)](https://travis-ci.org/dnuwa/property_lite_pro)              [![Coverage Status](https://coveralls.io/repos/github/dnuwa/property_lite_pro/badge.svg?branch=ft-update-to-sold-167009127)](https://coveralls.io/github/dnuwa/property_lite_pro?branch=ft-update-to-sold-167009127)                [![Maintainability](https://api.codeclimate.com/v1/badges/f160b5ab4d0c6f05ccab/maintainability)](https://codeclimate.com/github/dnuwa/property_lite_pro/maintainability)
 #### A hosted version of the application UI can be found [here](https://dnuwa.github.io/property_lite_pro/UI/)
 Property Pro Lite is a platform where people can create and/or search properties for sale or rent.
 
