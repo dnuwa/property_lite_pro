@@ -116,5 +116,42 @@ describe.only('Create an advert ', () => {
           done();
         });
     });
+
+    it('should raise a 401 when a token is not provided', (done) => {
+      chai.request(BASE_URL)
+        .post(LOGIN_URL)
+        .send(base.login_user_1)
+        .end((err, res) => {
+          chai.request(BASE_URL)
+            .post('/property')
+            .send(base.advert_1)
+            .end((err, resp) => {
+              resp.should.have.status(401);
+              resp.body.should.be.a('object');
+              resp.body.should.have.property('status');
+              resp.body.should.have.property('message');
+              done();
+            });
+        });
+    });
+
+    it('should raise a 401 when a token is invalid', (done) => {
+      chai.request(BASE_URL)
+        .post(LOGIN_URL)
+        .send(base.login_user_1)
+        .end((err, res) => {
+          chai.request(BASE_URL)
+            .post('/property')
+            .set('x-access-token', 'jdsvjlsdjnjnvldnvnsjfvnjnnjfnnsvln')
+            .send(base.advert_1)
+            .end((err, resp) => {
+              resp.should.have.status(401);
+              resp.body.should.be.a('object');
+              resp.body.should.have.property('status');
+              resp.body.should.have.property('message');
+              done();
+            });
+        });
+    });
   });
 });
