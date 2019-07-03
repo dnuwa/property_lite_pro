@@ -2,20 +2,16 @@
 /* eslint-disable prettier/prettier */
 const { adverts } = require('../models');
 const { checkUserType, currentUser, checkAdvert } = require('../helpers/utilities');
-
-const datetime = new Date();
+const { checkAdEmptyFileds } = require('../helpers/validators');
+const { datetime } = require('../helpers/utilities');
 
 exports.createAdvert = (req, res) => {
   const {
     status, type, state, city, address, price, imageUrl,
   } = req.body;
 
-  if (!status || !type || !state || !city || !address || !price || !imageUrl) {
-    return res.status(400).json({
-      status: 400,
-      error: 'status, type, state, city, address, price and imageUrl are required !',
-    });
-  }
+  checkAdEmptyFileds(status, type, state, city, address, price, imageUrl, res);
+
   const activeUser = currentUser(req.userId);
 
   if (checkUserType(activeUser, res)) {
@@ -23,37 +19,25 @@ exports.createAdvert = (req, res) => {
   }
 
   const advertId = adverts.length + 1;
-  const data = {
-    propertyId: advertId,
-    timestamp: datetime,
-    propertyStatus: status,
-    propertyType: type,
-    propertyState: state,
-    propertyCity: city,
-    propertyAddress: address,
-    propertyPrice: price,
-    propertyImage: imageUrl,
-    staffId: activeUser.id,
-    staffName: activeUser.firstName,
+  const propertyAdvert = {
+    id: advertId,
+    Status: status,
+    Type: type,
+    State: state,
+    City: city,
+    Address: address,
+    Price: price,
+    Image: imageUrl,
+    created_on: datetime,
+    created_by_staffId: activeUser.id,
+    created_by_staffName: activeUser.firstName,
   };
 
-  adverts.push(data);
+  adverts.push(propertyAdvert);
 
   return res.status(201).json({
     status: 201,
-    data: {
-      propertyId: data.propertyId,
-      timestamp: data.timestamp,
-      staffId: data.staffId,
-      staffName: data.staffName,
-      propertyStatus: data.propertyStatus,
-      propertyType: data.propertyType,
-      propertyState: data.propertyState,
-      propertyCity: data.propertyCity,
-      propertyAddress: data.propertyAddress,
-      propertyPrice: data.propertyPrice,
-      propertyImage: data.propertyImage,
-    },
+    data: propertyAdvert,
   });
 };
 

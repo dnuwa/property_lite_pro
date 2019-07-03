@@ -15,7 +15,7 @@ const SIGNUP_URL = '/auth/signup';
 // Configure chai
 chai.use(chaiHttp);
 chai.should();
-describe.only('Delete', () => {
+describe.only('Update', () => {
   before(() => {
     database.users.length = 0; // empty user collection
     chai.request(BASE_URL)
@@ -24,7 +24,7 @@ describe.only('Delete', () => {
       .end();
   });
   describe('POST', () => {
-    it('should raise 202  when advert is deleted', (done) => {
+    it('should raise 200  when advert is updated', (done) => {
       chai.request(BASE_URL)
         .post(LOGIN_URL)
         .send(base.login_user_1)
@@ -35,10 +35,11 @@ describe.only('Delete', () => {
             .send(base.advert_1)
             .end((err, resp) => {
               chai.request(BASE_URL)
-                .delete(`/property/${resp.body.data.id}`)
+                .patch(`/property/${resp.body.data.id}`)
                 .set('x-access-token', res.body.data.token)
+                .send(base.updateAd)
                 .end((err, response) => {
-                  response.should.have.status(202);
+                  response.should.have.status(200);
                   response.body.should.be.a('object');
                   response.body.should.have.property('status');
                   response.body.should.have.property('data');
@@ -49,7 +50,6 @@ describe.only('Delete', () => {
     });
   });
 
-  // *****
   it('should raise 400 when advert does not exist', (done) => {
     chai.request(BASE_URL)
       .post(LOGIN_URL)
@@ -61,43 +61,15 @@ describe.only('Delete', () => {
           .send(base.advert_1)
           .end((err, resp) => {
             chai.request(BASE_URL)
-              .delete('/property/1000')
+              .patch('/property/1000')
               .set('x-access-token', res.body.data.token)
+              .send(base.updateAd)
               .end((err, response) => {
                 response.should.have.status(400);
                 response.body.should.be.a('object');
                 response.body.should.have.property('status');
                 response.body.should.have.property('error');
                 done();
-              });
-          });
-      });
-  });
-
-  it('should raise 401  when unauthorised', (done) => {
-    chai.request(BASE_URL)
-      .post(LOGIN_URL)
-      .send(base.login_user_1)
-      .end((err, res) => {
-        chai.request(BASE_URL)
-          .post('/property') // create property
-          .set('x-access-token', res.body.data.token)
-          .send(base.advert_1)
-          .end((err, resp) => {
-            chai.request(BASE_URL)
-              .post(SIGNUP_URL)
-              .send(base.signup_user_7)
-              .end((err, respo) => {
-                chai.request(BASE_URL)
-                  .delete(`/property/${res.body.data.id}`)
-                  .set('x-access-token', respo.body.data.token)
-                  .end((err, response) => {
-                    response.should.have.status(401);
-                    response.body.should.be.a('object');
-                    response.body.should.have.property('status');
-                    response.body.should.have.property('error');
-                    done();
-                  });
               });
           });
       });

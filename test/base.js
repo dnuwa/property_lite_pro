@@ -90,5 +90,7 @@ exports.advert_1 = {
   imageUrl: 'https://cdn-images-1.medium.com/max/1200/1*RKZ5NBNqwlLXA6vewu7xmw.jpeg',
 };
 
-// eslint-disable-next-line max-len
-exports.token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTYyMDE2NjQ1LCJleHAiOjE1NjIxMDMwNDV9.jPvJ9mijNDCcytlygOGvBUP5a1QZywiBFCDZnHUByJQ';
+exports.updateAd = {
+  city: 'kigali',
+  address: 'buko street',
+};

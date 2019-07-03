@@ -3,6 +3,8 @@
 /* eslint-disable prettier/prettier */
 const { users, adverts } = require('../models');
 
+exports.datetime = new Date();
+
 // Current user data
 exports.currentUser = (id) => {
   let userData = null;
@@ -33,10 +35,30 @@ exports.checkUserType = (userData, res) => {
 };
 
 // return an object of a provided advertId
-exports.checkAdvert = (id) => {
+exports.checkAdvert = (advertId) => {
   for (let i = 0; i < adverts.length; i++) {
-    if (adverts[i].propertyId === Number(id)) {
+    if (adverts[i].id === Number(advertId)) {
       return adverts[i];
     }
+  }
+};
+
+// check loggedin user
+exports.loggedinUser = (userObj, res) => {
+  if (!userObj) {
+    return res.status(401).json({
+      status: 401,
+      error: 'Token is expired, please login again!',
+    });
+  }
+};
+
+// check for a specifc property advert
+exports.checkAdvertId = (advertObj, id, res) => {
+  if (!advertObj) {
+    return res.status(400).json({
+      status: 400,
+      error: `There is no property with Id: ${id}`,
+    });
   }
 };

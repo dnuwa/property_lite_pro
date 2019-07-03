@@ -9,6 +9,15 @@ exports.checkEmptyFields = (em, pass, lname, fname, phno, res) => {
   }
 };
 
+exports.checkAdEmptyFileds = (status, type, state, city, address, price, imageUrl, res) => {
+  if (!status || !type || !state || !city || !address || !price || !imageUrl) {
+    return res.status(400).json({
+      status: 400,
+      error: 'status, type, state, city, address, price and imageUrl are required !',
+    });
+  }
+};
+
 exports.checkName = (fname, lname, res) => {
   if (!fname.match(/^(?![\s.]+$)[a-zA-Z\s.]*$/) || !lname.match(/^(?![\s.]+$)[a-zA-Z\s.]*$/)) {
     return res.status(400).json({
