@@ -1,9 +1,15 @@
 /* eslint-disable prettier/prettier */
+const Cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
 const express = require('express');
 const bodyParser = require('body-parser');
 const routes = require('./routes');
+const swaggerDoc = require('./swagger.json');
 
 const app = express();
+
+app.use('/api_docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc));
+app.use(Cors());
 
 // Configure bodyparser to handle post requests
 app.use(
