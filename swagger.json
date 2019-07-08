@@ -1,0 +1,330 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1",
+    "title": "property_pro_lite API Endpoints Documentation"
+  },
+  "host": "localhost:5000",
+  "basePath": "/api/v1",
+  "jwtsecurity": {
+    "type": "apiKey",
+    "name": "Authorization",
+    "in": "header"
+  },
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "definitions": {
+    "signup": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "type": "integer"
+        },
+        "address": {
+          "type": "string"
+        },
+        "isAdmin": {
+          "type": "string"
+        }
+      }
+    },
+    "signin": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "advert": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "price": {
+          "type": "string"
+        },
+        "imageUrl": {
+          "type": "string"
+        }
+      }
+    },
+    "advertSold": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "paths": {
+    "/auth/signup": {
+      "post": {
+        "tags": [
+          "Signup"
+        ],
+        "description": "Create new user acount",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "For the new users to sign up",
+            "schema": {
+              "$ref": "#/definitions/signup"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {}
+      },
+      "get": {
+        "tags": [
+          "Signup"
+        ],
+        "description": "Return all signed up users",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {}
+      }
+    },
+    "/auth/signin": {
+      "post": {
+        "tags": [
+          "Signin"
+        ],
+        "description": "User Log in",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "description": "The login is for persons with users accounts to property_pro_lite",
+            "schema": {
+              "$ref": "#/definitions/signin"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {}
+      }
+    },
+    "/property": {
+      "post": {
+        "tags": [
+          "Property"
+        ],
+        "description": "Post a property advert",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "The user token",
+            "required": true
+          },
+          {
+            "name": "advert",
+            "in": "body",
+            "description": "A user while logged in should be able to post a property advert",
+            "schema": {
+              "$ref": "#/definitions/advert"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {}
+      },
+      "get": {
+        "tags": [
+          "Property"
+        ],
+        "description": "Return all property adverts",
+        "parameters": [],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {}
+      }
+    },
+    "/property/{propertyId}": {
+      "get": {
+        "tags": [
+          "Property"
+        ],
+        "description": "Return a single property",
+        "parameters": [
+          {
+            "name": "propertyId",
+            "in": "path",
+            "type": "integer",
+            "description": "The propertyId of the required property advert",
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {}
+      },
+      "patch": {
+        "tags": [
+          "Property"
+        ],
+        "description": "Update the property advert",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "The user token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "type": "integer",
+            "description": "The propertyId of the property advert to be updated",
+            "required": true
+          },
+          {
+            "name": "advert",
+            "in": "body",
+            "description": "A user while logged in should be able to edit a property advert",
+            "schema": {
+              "$ref": "#/definitions/advert"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {}
+      },
+      "delete": {
+        "tags": [
+          "Property"
+        ],
+        "description": "Delete a property",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "The user token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "type": "integer",
+            "description": "The propertyId of the required property advert",
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {}
+      }
+    },
+    "/property/{propertyId}/sold": {
+      "patch": {
+        "tags": [
+          "Property"
+        ],
+        "description": "Return a single property",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "The user token",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "propertyId",
+            "in": "path",
+            "type": "integer",
+            "description": "The propertyId of the required property advert",
+            "required": true
+          },
+          {
+            "name": "SOLD",
+            "in": "body",
+            "description": "A user while logged in should be able to edit a property advert",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/advertSold"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {}
+      }
+    },
+    "/property/type/{propertyType}": {
+      "get": {
+        "tags": [
+          "Property"
+        ],
+        "description": "Return properties of the same property type",
+        "parameters": [
+          {
+            "name": "propertyType",
+            "in": "path",
+            "type": "string",
+            "description": "The propertyType of the required property adverts",
+            "required": true
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {}
+      }
+    }
+  }
+}
