@@ -9,7 +9,14 @@ function close() {
     document.querySelector('.bg-modal').style.display = 'none';
 };
 
-//
+// dispaly signup when on login modal
+document.getElementById('signup-link').onclick = toggleToSignup;
+function toggleToSignup() {
+    document.querySelector('.bg-modal').style.display = 'none';
+    document.querySelector('.bg-modal-signup').style.display = 'flex';
+}
+
+// signup a user
 document.getElementById('signup').onclick = openSignup;
 function openSignup() {
     document.querySelector('.bg-modal-signup').style.display = 'flex';
@@ -19,6 +26,13 @@ document.querySelector('.close-signup').onclick = closeSignup;
 function closeSignup() {
     document.querySelector('.bg-modal-signup').style.display = 'none';
 };
+
+// dispaly login when on signup modal
+document.getElementById('login-link').onclick = toggleToLogin;
+function toggleToLogin() {
+    document.querySelector('.bg-modal-signup').style.display = 'none';
+    document.querySelector('.bg-modal').style.display = 'flex';
+}
 
 // posting an advert
 document.getElementById('advertise').onclick = openAdvertForm;
@@ -31,14 +45,3 @@ function closeAdvertForm() {
     document.querySelector('.bg-modal-advert').style.display = 'none';
 };
 
-// update advert
-document.getElementById('edit').onclick = openAdEdit;
-
-function openAdEdit() {
-    document.querySelector('.bg-modal-edit').style.display = 'flex';
-};
-
-document.querySelector('.close-edit').onclick = closeAdEdit;
-function closeAdEdit() {
-    document.querySelector('.bg-modal-edit').style.display = 'none';
-};

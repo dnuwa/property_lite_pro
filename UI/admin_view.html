@@ -21,11 +21,11 @@
                 <li id="advertise">
                     Advertise
                 </li>
-                <li id="signup">
-                    Signup
+                <li>
+                    Admin:
                 </li>
-                <li id="login">
-                    Login
+                <li>
+                    daniel
                 </li>
             </ul>
             <div class="search-form">
@@ -33,8 +33,7 @@
             </div>
         </nav>
         <section class="info">
-            <img src="https://cdn.trendir.com/wp-content/uploads/2016/07/Small-tiny-house-cottage-with-only-204-square-foot.jpg"
-                alt="">
+            <img src="https://media-cdn.tripadvisor.com/media/photo-s/01/c5/08/c8/2-of-the-cottages-ours.jpg" alt="">
             <div class="box">
                 <div class="date">12/12/2019</div>
                 <h1>10 BEDROOMS FURNISHED HOUSE FOR RENTING IN KICUKIRO</h1>
@@ -48,83 +47,64 @@
                 <p>location : moyo close st 31</p>
                 <p class="price">$299/mo</p>
                 <div>
-                    <button>Buy Now</button>
-                    <button id="display-map">Click to view map</button>
+                    <button class="del">Delete Advert</button>
+                    <button class="edit" id="edit">Edit this advert</button>
+                    <button>Mark as Sold</button>
                 </div>
             </div>
         </section>
 
     </div>
     <!-- Wrapper Ends-->
-    <div class="bg-modal-map">
-        <div class="modal-content-map">
-            <div class="close-map">+</div>
-            <div class="map-section">
-                <img src="../UI/images/Screenshot.png" alt="">
-            </div>
-
-        </div>
-    </div>
-    <div class="bg-modal">
-        <div class="modal-content">
-            <div class="close">+</div>
-            <img src="images/user_avatar.png" alt="user_avatar">
-            <form action="">
-                <p>
-                    <label for="">Email Address</label>
-                    <input type="email" name="email" placeholder="john.deo@hotmail.com">
-                </p>
-                <p>
-                    <label for="">Password</label>
-                    <input type="password" name="password" placeholder="********">
-                </p>
-                <p class="full">
-                    <button>Submit</button>
-                </p>
-            </form>
-            <div id="signup-link">Don't have an account? SignUp</div>
-        </div>
-    </div>
-
-    <div class="bg-modal-signup">
-        <div class="modal-content-signup">
-            <div class="close-signup">+</div>
+    <div class="bg-modal-edit">
+        <div class="modal-content-edit">
+            <div class="close-edit">+</div>
             <div class="form-section">
-                <img src="images/user_avatar.png" alt="user_avatar">
+                <img src="images/house_avatar.ico" alt="house_avatar">
                 <form action="">
                     <p>
-                        <label for="">First Name</label>
-                        <input type="text" name="firstname" placeholder="John">
+                        <label for="">Title</label>
+                        <input type="text" name="type"
+                            placeholder="10 BEDROOMS FURNISHED HOUSE FOR RENTING IN KICUKIRO">
                     </p>
                     <p>
-                        <label for="">Last Name</label>
-                        <input type="text" name="lastname" placeholder="Doe">
+                        <label for="">Type</label>
+                        <input type="text" name="type" placeholder="Rental/Sale">
                     </p>
                     <p>
-                        <label for="">Phone Number</label>
-                        <input type="text" name="phonenumber" placeholder="(+250) 555-555">
+                        <label for="">District</label>
+                        <input type="text" name="text" placeholder="kampala">
                     </p>
                     <p>
-                        <label for="">Address</label>
-                        <input type="text" name="address" placeholder="colivile street plot 21, kigali - Rwanda">
+                        <label for="">Location</label>
+                        <input type="text" name="text" placeholder="central division">
                     </p>
                     <p>
-                        <label for="">Email Address</label>
-                        <input type="email" name="email" placeholder="john.deo@hotmail.com">
+                        <label for="">Number of rooms</label>
+                        <input type="text" name="text" placeholder="3">
                     </p>
                     <p>
-                        <label for="">Password</label>
-                        <input type="password" name="password" placeholder="********">
+                        <label for="">Price</label>
+                        <input type="text" name="text" placeholder="$1000">
                     </p>
+                    <p class="full">
+                        <label for="">Description</label>
+                        <textarea name="message" rows="5"></textarea>
+                    </p>
+
+                    <input type="file" name="fileToUpload" id="fileToUpload">
+                    <input type="submit" value="Upload Image" name="submit">
+
                     <p class="full">
                         <button>Submit</button>
                     </p>
+
                 </form>
+
             </div>
-            <div id="login-link">Already have an account? Log In</div>
+
         </div>
     </div>
-
     <div class="bg-modal-advert">
         <div class="modal-content-advert">
             <div class="close-advert">+</div>
@@ -177,8 +157,7 @@
     <footer>
         <p>&copy; 2019 property_lite_pro.com<p>
     </footer>
-    <script src="scripts/dispalymap.js"></script>
-    <script src='scripts/main.js'></script>
+    <script src='scripts/updateproperty.js'></script>
 </body>
 
 </html>

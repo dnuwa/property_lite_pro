@@ -1,0 +1,158 @@
+.wrapper{
+    display: grid;
+    grid-gap:20px;
+    padding-bottom: 5%;
+}
+.nav-bar{
+    display: grid;
+    grid-gap:20px;
+    grid-template-columns: repeat(3, 1fr);
+    list-style: none;
+    padding: 30px;
+    background-color:white;
+    box-shadow: 1px 9px 13px -16px;
+    width: -webkit-fill-available;
+    position: fixed;
+}
+
+li{
+    text-align: center;
+    margin:auto;
+}
+
+.nav-bar ul{
+    display: grid;
+    grid-gap:20px;
+    grid-template-columns: repeat(5, 1fr);
+    list-style: none;
+    font-weight: bold;
+}
+
+.nav-bar li a{
+    text-decoration: none;
+    color: #000000;
+    font-size: 17.6px;
+    font-weight: 600px;
+}
+
+.nav-bar ul :hover{
+    border-bottom: 1px solid #2eca6a;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logo{
+    font-weight: bolder;
+    font-size: 34px;
+    padding-left: 30px;
+    color:#2eca6a;
+}
+
+.nav-bar .logo :hover{
+    color:#2eca6a;
+    cursor: pointer;
+}
+
+.logo span{
+    color:#000000;
+    letter-spacing: 0px;
+}
+
+.info p {
+    font-size:1rem;
+    padding: 0 0 8px 0;
+}
+
+.info{
+    background: var(--primary);
+    box-shadow: var(--shadow);
+    display: grid;
+    grid-gap:30px;
+    grid-template-columns:repeat(2, 1fr);
+    padding: 3rem;
+    margin: 150px 50px 50px;
+}
+
+.box button{
+    background-color: rgb(14, 186, 238);
+    color:white;
+    margin-top:5px;
+}
+
+.box .del{
+    background-color: red;
+    border: red;
+}
+
+.box .edit{
+    background-color: rgb(4, 146, 39);
+    border: rgb(0, 255, 64);
+}
+
+.form-section form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+}
+
+.form-section form .full{
+    grid-column: 1/3;
+}
+
+.form-section form .full textarea{
+    width: 100%;
+}
+
+.form-section form .full button{
+    width: 50%;
+    margin-left: 25%;
+}
+
+.modal-content button{
+    width: 50%;
+    margin-left: 25%;
+}
+
+.bg-modal, .bg-modal-signup, .bg-modal-advert, .bg-modal-edit, .bg-modal-map{
+	background-color: rgba(0, 0, 0, 0.8);
+	width: 100%;
+	height: 100%;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    position: fixed;
+}
+
+.modal-content, .modal-content-signup, .modal-content-advert, .modal-content-edit, .modal-content-map{
+    width: 500px;
+    background: white;
+    border-radius: 4px;
+    padding: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.bg-modal img, .bg-modal-signup img, .bg-modal-advert img, .bg-modal-edit img{
+    height: 100px;
+}
+
+.modal-content p, .modal-content-signup p, .modal-content-advert p, .modal-content-edit p{
+    text-align: left;
+}
+
+.link{
+    text-align: center;
+}
+
+.close, .close-signup, .close-advert, .close-edit, .close-map{
+    position: absolute;
+    top:0;
+    right: 14px;
+    font-size:42px;
+    transform:rotate(45deg);
+    cursor: pointer;
+    color: red;
+    font-weight: bolder;
+}
