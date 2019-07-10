@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-const { adverts } = require('../models');
-const { currentUser, checkAdvert } = require('../helpers/utilities');
+import { adverts } from '../models';
+import { currentUser, checkAdvert } from '../helpers/utilities';
 
 
 exports.deleteAdvert = (req, res) => {

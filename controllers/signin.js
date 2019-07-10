@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable consistent-return */
-const bcrypt = require('bcryptjs');
-const middleware = require('../middleware');
-const { users } = require('../models');
+import bcrypt from 'bcryptjs';
+import middleware from '../middleware';
+import { users } from '../models';
 
 exports.signin = (req, res) => {
   const { password, email } = req.body;

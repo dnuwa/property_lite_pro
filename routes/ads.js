@@ -1,11 +1,14 @@
-const adRouter = require('express').Router();
+/* eslint-disable import/no-duplicates */
+import Router from 'express';
 
-const advertController = require('../controllers/adverts');
-const addeleteController = require('../controllers/deleteAdvert');
-const searchController = require('../controllers/searchAdverts');
-const updateController = require('../controllers/updateAdvert');
-const markAsSoldcontroller = require('../controllers/updateAdvert');
-const middleware = require('../middleware');
+import advertController from '../controllers/adverts';
+import addeleteController from '../controllers/deleteAdvert';
+import searchController from '../controllers/searchAdverts';
+import updateController from '../controllers/updateAdvert';
+import markAsSoldcontroller from '../controllers/updateAdvert';
+import middleware from '../middleware';
+
+const adRouter = Router();
 
 adRouter.route('/property').post(middleware.verifyToken, advertController.createAdvert);
 adRouter.route('/property').get(advertController.allAdverts);

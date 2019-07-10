@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
-const bcrypt = require('bcryptjs');
-const middleware = require('../middleware');
-const { users } = require('../models');
-const {
+import bcrypt from 'bcryptjs';
+import middleware from '../middleware';
+import { users } from '../models';
+import {
   checkName, checkEmail, checkPassword, checkPhoneNumber, checkEmptyFields,
-} = require('../helpers/validators');
+} from '../helpers/validators';
 
 // create user account
 exports.signup = (req, res) => {
