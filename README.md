@@ -2,19 +2,19 @@
 [![Build Status](https://travis-ci.org/dnuwa/property_lite_pro.svg?branch=develop)](https://travis-ci.org/dnuwa/property_lite_pro)              [![Coverage Status](https://coveralls.io/repos/github/dnuwa/property_lite_pro/badge.svg?branch=develop)](https://coveralls.io/github/dnuwa/property_lite_pro?branch=develop)                [![Maintainability](https://api.codeclimate.com/v1/badges/f160b5ab4d0c6f05ccab/maintainability)](https://codeclimate.com/github/dnuwa/property_lite_pro/maintainability)
 
 #### Table of contents
-- [Project overview](overview)
-- [Features](features)
-- [Project setup](setup)
-- [Demo](demo)
-- [Requirements](req)
-- [Development setup](dev)
-- [Run application](run)
-- [Test application](test)
-- [API endpoints](endpoints)
+- [Project overview](#overview)
+- [Features](#features)
+- [Project setup](#setup)
+- [Demo](#demo)
+- [Requirements](#req)
+- [Development setup](#dev)
+- [Run application](#run)
+- [Test application](#test)
+- [API endpoints](#endpoints)
 
 #### A hosted version of the application UI can be found [here](https://dnuwa.github.io/property_lite_pro/UI/)
 
-### Project Overview <a name="overview"></a>
+### Project Overview <a name="overview"/>
 Property Pro Lite is a platform where people can create and/or search properties for sale or rent.
 
 ### Installation
@@ -31,7 +31,7 @@ git clone https://github.com/dnuwa/property_lite_pro.git
 - After successfully cloning the project: `cd property_lite_pro`
 - Open index.html with live server
 
-## Features <a name="features"></a>
+## Features <a name="features"/>
 - User can sign up.
 - User can sign in.
 - User (agent) can post a property advert.
@@ -42,38 +42,39 @@ git clone https://github.com/dnuwa/property_lite_pro.git
 - User can view all properties of a specific type - 2 bedroom, 3 bedroom, mini flat etc.
 - User can view a specific property advert.
 
-# Getting Started <a name="setup"></a>
+# Getting Started <a name="setup"/>
 In your terminal
 1. Clone the repo locally to your machine by running `git clone https://github.com/dnuwa/property_lite_pro.git`
 2. change your current directory (`cd`) to wherever you cloned the app in 1 above.
 
-#### Demos <a name="demo"></a>
+#### Demos <a name="demo"/>
 This __api__ currently  has one versions hosted on heroku;
 - [v1 (In memory Data Structures)](https://property-pro1.herokuapp.com/api/v1)
 
-#### Requirements <a name="req"></a>
+#### Requirements <a name="req"/>
 - [javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference) A general purpose programming language
 - [npm](https://docs.npmjs.com/about-npm/) A tool for installing node packages
 - [node](https://nodejs.org/en/docs/)  A javascript framework
 - [express](https://expressjs.com/en/api.html)  A javascript framework
 
-#### Development setup <a name="dev"></a>
+#### Development setup <a name="dev"/>
 
 - Install dependencies
   ```bash
   npm install
   ```
-#### Run the application <a name="run"></a>
+#### Run the application <a name="run"/>
 ```bash
     npm run dev
 ```
 
-#### Running tests <a name="test"></a>
+#### Running tests <a name="test"/>
 ```bash
 #with coverage
 npm run test
 ```
-#### API REST End Points <a name="endpoints"></a>
+
+## API REST End Points <a name="endpoints"/>
 | End Point                                           | Verb |Use                                            |
 | ----------------------------------------------------|------|-----------------------------------------------|
 |`/api/v1/`                                         |GET   |API index                                      |
