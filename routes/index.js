@@ -1,25 +1,13 @@
-const router = require('express').Router();
-const signupController = require('../controllers/signup');
-const signinController = require('../controllers/signin');
-const advertController = require('../controllers/adverts');
-const addeleteController = require('../controllers/deleteAdvert');
-const searchController = require('../controllers/searchAdverts');
-const updateController = require('../controllers/updateAdvert');
-const markAsSoldcontroller = require('../controllers/updateAdvert');
-const middleware = require('../middleware');
+/* eslint-disable prettier/prettier */
+const { Router } = require('express');
+const adRouter = require('./ads');
+const authRouter = require('./auth');
 
-router.route('/auth/signup').post(signupController.signup);
-router.route('/auth/signup').get(signupController.allUsers);
-router.route('/auth/signin').post(signinController.signin);
-router.route('/property').post(middleware.verifyToken, advertController.createAdvert);
-router.route('/property').get(advertController.allAdverts);
-router
-  .route('/property/:propertyId')
-  .get(advertController.singleAdvert)
-  .delete(middleware.verifyToken, addeleteController.deleteAdvert)
-  .patch(middleware.verifyToken, updateController.updateAdvert);
 
-router.route('/property/type/:type').get(searchController.searchAdvert);
-router.route('/property/:propertyId/sold').patch(middleware.verifyToken, markAsSoldcontroller.markSold);
+const prefix = '/api/v1';
+
+const router = Router();
+router.use(prefix, adRouter);
+router.use(prefix, authRouter);
 
 module.exports = router;

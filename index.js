@@ -17,12 +17,12 @@ app.use(
     extended: true,
   }),
 );
-routes.use(bodyParser.json());
+app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/json' }));
 app.use(bodyParser.text());
 
 // use API routes in the app
-app.use('/api/v1', routes);
+app.use(routes);
 
 const PORT = process.env.PORT || 5000;
 
