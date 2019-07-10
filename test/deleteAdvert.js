@@ -11,6 +11,7 @@ const base = require('./base');
 const BASE_URL = 'http://localhost:5000/api/v1';
 const LOGIN_URL = '/auth/signin';
 const SIGNUP_URL = '/auth/signup';
+const image = './helpers/test_image.png';
 
 // Configure chai
 chai.use(chaiHttp);
@@ -27,13 +28,16 @@ describe.only('Delete', () => {
     it('should raise 202  when advert is deleted', (done) => {
       chai.request(BASE_URL)
         .post(LOGIN_URL)
-        .send(base.login_user_1)
+        .field(base.login_user_1)
+        .attach('photo', image)
         .end((err, res) => {
+          if (err) done();
           chai.request(BASE_URL)
             .post('/property') // create property
             .set('x-access-token', res.body.data.token)
             .send(base.advert_1)
-            .end((err, resp) => {
+            .end((error, resp) => {
+              if (error) done();
               chai.request(BASE_URL)
                 .delete(`/property/${resp.body.data.id}`)
                 .set('x-access-token', res.body.data.token)
@@ -59,7 +63,8 @@ describe.only('Delete', () => {
           .post('/property') // create account
           .set('x-access-token', res.body.data.token)
           .send(base.advert_1)
-          .end((err, resp) => {
+          .end((error, resp) => {
+            if (error) done();
             chai.request(BASE_URL)
               .delete('/property/1000')
               .set('x-access-token', res.body.data.token)
@@ -83,7 +88,8 @@ describe.only('Delete', () => {
           .post('/property') // create property
           .set('x-access-token', res.body.data.token)
           .send(base.advert_1)
-          .end((err, resp) => {
+          .end((error, resp) => {
+            if (error) done();
             chai.request(BASE_URL)
               .post(SIGNUP_URL)
               .send(base.signup_user_7)

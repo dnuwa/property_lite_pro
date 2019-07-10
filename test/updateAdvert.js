@@ -3,7 +3,7 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 require('../index');
-// import out user collection(database)
+
 const database = require('../models');
 const base = require('./base');
 
@@ -11,6 +11,7 @@ const base = require('./base');
 const BASE_URL = 'http://localhost:5000/api/v1';
 const LOGIN_URL = '/auth/signin';
 const SIGNUP_URL = '/auth/signup';
+const image = './helpers/test_image.png';
 
 // Configure chai
 chai.use(chaiHttp);
@@ -29,11 +30,14 @@ describe.only('Update', () => {
         .post(LOGIN_URL)
         .send(base.login_user_1)
         .end((err, res) => {
+          if (err) done();
           chai.request(BASE_URL)
             .post('/property') // create property
             .set('x-access-token', res.body.data.token)
-            .send(base.advert_1)
-            .end((err, resp) => {
+            .field(base.advert_1)
+            .attach('photo', image)
+            .end((error, resp) => {
+              if (error) done();
               chai.request(BASE_URL)
                 .patch(`/property/${resp.body.data.id}`)
                 .set('x-access-token', res.body.data.token)
@@ -55,20 +59,24 @@ describe.only('Update', () => {
       .post(LOGIN_URL)
       .send(base.login_user_1)
       .end((err, res) => {
+        if (err) done();
         chai.request(BASE_URL)
           .post('/property') // create account
           .set('x-access-token', res.body.data.token)
-          .send(base.advert_1)
-          .end((err, resp) => {
+          .field(base.advert_1)
+          .attach('photo', image)
+          .end((error, resp) => {
+            if (error) done();
             chai.request(BASE_URL)
               .patch('/property/1000')
               .set('x-access-token', res.body.data.token)
               .send(base.updateAd)
-              .end((err, response) => {
+              .end((er, response) => {
                 response.should.have.status(400);
                 response.body.should.be.a('object');
                 response.body.should.have.property('status');
                 response.body.should.have.property('error');
+                if (er) done();
                 done();
               });
           });
@@ -81,20 +89,24 @@ describe.only('Update', () => {
         .post(LOGIN_URL)
         .send(base.login_user_1)
         .end((err, res) => {
+          if (err) done();
           chai.request(BASE_URL)
             .post('/property') // create property
             .set('x-access-token', res.body.data.token)
-            .send(base.advert_1)
-            .end((err, resp) => {
+            .field(base.advert_1)
+            .attach('photo', image)
+            .end((error, resp) => {
+              if (error) done();
               chai.request(BASE_URL)
                 .patch(`/property/${resp.body.data.id}/sold`)
                 .set('x-access-token', res.body.data.token)
                 .send({ newStatus: 'SOLD' })
-                .end((err, response) => {
+                .end((e, response) => {
                   response.should.have.status(200);
                   response.body.should.be.a('object');
                   response.body.should.have.property('status');
                   response.body.should.have.property('data');
+                  if (er) done();
                   done();
                 });
             });
@@ -106,20 +118,23 @@ describe.only('Update', () => {
         .post(LOGIN_URL)
         .send(base.login_user_1)
         .end((err, res) => {
+          if (err) done();
           chai.request(BASE_URL)
             .post('/property') // create account
             .set('x-access-token', res.body.data.token)
             .send(base.advert_1)
-            .end((err, resp) => {
+            .end((error, resp) => {
+              if (error) done();
               chai.request(BASE_URL)
                 .patch('/property/1000/sold')
                 .set('x-access-token', res.body.data.token)
                 .send(base.updateAd)
-                .end((err, response) => {
+                .end((e, response) => {
                   response.should.have.status(400);
                   response.body.should.be.a('object');
                   response.body.should.have.property('status');
                   response.body.should.have.property('error');
+                  if (e) done();
                   done();
                 });
             });
