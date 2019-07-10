@@ -1,7 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable consistent-return */
 /* eslint-disable prettier/prettier */
-const { users, adverts } = require('../models');
+import { users, adverts } from '../models';
 
 exports.datetime = new Date();
 

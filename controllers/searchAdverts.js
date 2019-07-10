@@ -1,7 +1,7 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable consistent-return */
 /* eslint-disable prettier/prettier */
-const { adverts } = require('../models');
+import { adverts } from '../models';
 
 exports.searchAdvert = (req, res) => {
   const { params: { type } } = req;

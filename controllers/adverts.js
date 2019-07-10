@@ -1,9 +1,11 @@
 /* eslint-disable consistent-return */
 /* eslint-disable prettier/prettier */
-const { adverts } = require('../models');
-const { checkUserType, currentUser, checkAdvert } = require('../helpers/utilities');
-const { checkAdEmptyFileds } = require('../helpers/validators');
-const { datetime } = require('../helpers/utilities');
+import { adverts } from '../models';
+import {
+  checkUserType, currentUser, checkAdvert, datetime,
+} from '../helpers/utilities';
+import { checkAdEmptyFileds } from '../helpers/validators';
+
 
 exports.createAdvert = (req, res) => {
   const {

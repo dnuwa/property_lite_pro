@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-const { Router } = require('express');
-const adRouter = require('./ads');
-const authRouter = require('./auth');
+import { Router } from 'express';
+import adRouter from './ads';
+import authRouter from './auth';
 
 
 const prefix = '/api/v1';

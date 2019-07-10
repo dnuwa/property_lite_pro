@@ -1,6 +1,8 @@
-const authRouter = require('express').Router();
-const signupController = require('../controllers/signup');
-const signinController = require('../controllers/signin');
+import Router from 'express';
+import signupController from '../controllers/signup';
+import signinController from '../controllers/signin';
+
+const authRouter = Router();
 
 authRouter.route('/auth/signup').post(signupController.signup);
 authRouter.route('/auth/signup').get(signupController.allUsers);

@@ -1,10 +1,11 @@
 /* eslint-disable prettier/prettier */
-const Cors = require('cors');
-const swaggerUi = require('swagger-ui-express');
-const express = require('express');
-const bodyParser = require('body-parser');
-const routes = require('./routes');
-const swaggerDoc = require('./swagger.json');
+
+import Cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
+import express from 'express';
+import bodyParser from 'body-parser';
+import routes from './routes';
+import swaggerDoc from './swagger.json';
 
 const app = express();
 
