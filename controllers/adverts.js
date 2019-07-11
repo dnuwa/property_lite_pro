@@ -4,7 +4,7 @@ import { adverts } from '../models';
 import {
   checkUserType, currentUser, checkAdvert, datetime,
 } from '../helpers/utilities';
-import { checkAdEmptyFileds } from '../helpers/validators';
+import { checkAdEmptyFileds, checkPrice } from '../helpers/validators';
 
 
 exports.createAdvert = (req, res) => {
@@ -14,12 +14,14 @@ exports.createAdvert = (req, res) => {
 
   checkAdEmptyFileds(status, type, state, city, address, price, imageUrl, res);
 
+
   const activeUser = currentUser(req.userId);
 
   if (checkUserType(activeUser, res)) {
     return checkUserType(activeUser, res);
   }
 
+  checkPrice(price, res);
   const advertId = adverts.length + 1;
   const propertyAdvert = {
     id: advertId,

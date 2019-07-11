@@ -39,7 +39,7 @@ exports.signup = (req, res) => {
   }
 
   if (checkPhoneNumber(phoneN, res)) {
-    return checkPassword(phoneN, res);
+    return checkPhoneNumber(phoneN, res);
   }
 
   // generate user id basing on list length
