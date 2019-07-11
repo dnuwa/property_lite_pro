@@ -1,6 +1,7 @@
 /* eslint-disable import/no-duplicates */
 import Router from 'express';
 
+import fileupload from 'express-fileupload';
 import advertController from '../controllers/adverts';
 import addeleteController from '../controllers/deleteAdvert';
 import searchController from '../controllers/searchAdverts';
@@ -10,6 +11,7 @@ import middleware from '../middleware';
 
 const adRouter = Router();
 
+adRouter.use(fileupload({ useTempFiles: true }));
 adRouter.route('/property').post(middleware.verifyToken, advertController.createAdvert);
 adRouter.route('/property').get(advertController.allAdverts);
 adRouter

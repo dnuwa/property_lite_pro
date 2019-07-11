@@ -87,7 +87,6 @@ exports.advert_1 = {
   city: 'kampala',
   address: 'bukoto street',
   price: '10000000',
-  imageUrl: 'https://cdn-images-1.medium.com/max/1200/1*RKZ5NBNqwlLXA6vewu7xmw.jpeg',
 };
 
 exports.updateAd = {

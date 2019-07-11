@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node babel-node index",
-    "dev": "nodemon --exec babel-node  index",
+    "dev": "nodemon index --exec babel-node",
     "lint": "./node_modules/.bin/eslint",
-    "test": "nyc --reporter=html --reporter=text --require @babel/register mocha --exit",
+    "test": "nyc --reporter=html --reporter=text --require @babel/register --require @babel/polyfill mocha test/**/*.js --timeout 150000 --exit",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
@@ -27,8 +27,10 @@
     "@babel/polyfill": "^7.4.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cloudinary": "^1.14.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-fileupload": "^1.1.5",
     "jsonwebtoken": "^8.5.1",
     "swagger-jsdoc": "^3.2.9",
     "swagger-ui-express": "^4.0.7"

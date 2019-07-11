@@ -11,6 +11,7 @@ const base = require('./base');
 const BASE_URL = 'http://localhost:5000/api/v1';
 const LOGIN_URL = '/auth/signin';
 const SIGNUP_URL = '/auth/signup';
+const image = './helpers/test_image.png';
 
 // Configure chai
 chai.use(chaiHttp);
@@ -30,10 +31,12 @@ describe.only('Create an advert ', () => {
         .post(LOGIN_URL)
         .send(base.login_user_1)
         .end((err, res) => {
+          if (err) done();
           chai.request(BASE_URL)
             .post('/property')
             .set('x-access-token', res.body.data.token)
-            .send(base.advert_1)
+            .field(base.advert_1)
+            .attach('photo', image)
             .end((err, resp) => {
               resp.should.have.status(201);
               resp.body.should.be.a('object');
@@ -49,10 +52,12 @@ describe.only('Create an advert ', () => {
         .post(SIGNUP_URL)
         .send(base.signup_user_7)
         .end((err, res) => {
+          if (err) done();
           chai.request(BASE_URL)
             .post('/property')
             .set('x-access-token', res.body.data.token)
-            .send(base.advert_1)
+            .field(base.advert_1)
+            .attach('photo', image)
             .end((err, resp) => {
               resp.should.have.status(401);
               resp.body.should.be.a('object');
@@ -68,14 +73,18 @@ describe.only('Create an advert ', () => {
         .post(LOGIN_URL)
         .send(base.login_user_1)
         .end((err, res) => {
+          if (err) done();
           chai.request(BASE_URL)
             .post('/property')
             .set('x-access-token', res.body.data.token)
-            .end((err, resp) => {
+            .field('')
+            .attach('photo', '')
+            .end((error, resp) => {
               resp.should.have.status(400);
               resp.body.should.be.a('object');
               resp.body.should.have.property('status');
               resp.body.should.have.property('error');
+              if (error) done();
               done();
             });
         });
@@ -122,10 +131,12 @@ describe.only('Create an advert ', () => {
         .post(LOGIN_URL)
         .send(base.login_user_1)
         .end((err, res) => {
+          if (err) done();
           chai.request(BASE_URL)
             .post('/property')
             .send(base.advert_1)
-            .end((err, resp) => {
+            .end((error, resp) => {
+              if (error) done();
               resp.should.have.status(401);
               resp.body.should.be.a('object');
               resp.body.should.have.property('status');
@@ -140,15 +151,17 @@ describe.only('Create an advert ', () => {
         .post(LOGIN_URL)
         .send(base.login_user_1)
         .end((err, res) => {
+          if (err) done();
           chai.request(BASE_URL)
             .post('/property')
             .set('x-access-token', 'jdsvjlsdjnjnvldnvnsjfvnjnnjfnnsvln')
             .send(base.advert_1)
-            .end((err, resp) => {
+            .end((error, resp) => {
               resp.should.have.status(401);
               resp.body.should.be.a('object');
               resp.body.should.have.property('status');
               resp.body.should.have.property('message');
+              if (error) done();
               done();
             });
         });
