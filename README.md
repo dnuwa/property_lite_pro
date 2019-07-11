@@ -48,7 +48,7 @@ In your terminal
 2. change your current directory (`cd`) to wherever you cloned the app in 1 above.
 
 #### Demos <a name="demo"/>
-This __api__ currently  has one versions hosted on heroku;
+This __api__ currently  has one version hosted on heroku;
 - [v1 (In memory Data Structures)](https://property-pro1.herokuapp.com/api/v1)
 
 #### Requirements <a name="req"/>

@@ -4,7 +4,7 @@
     "version": "1",
     "title": "property_pro_lite API Endpoints Documentation"
   },
-  "host": "localhost:5000",
+  "host": "property-pro1.herokuapp.com",
   "basePath": "/api/v1",
   "jwtsecurity": {
     "type": "apiKey",

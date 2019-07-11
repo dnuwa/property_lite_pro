@@ -9,7 +9,7 @@ import {
 exports.updateAdvert = (req, res) => {
   const {
     body: {
-      status, type, state, city, address, price, imageUrl,
+      status, type, state, city, address, price, imageUrl, description,
     }, params: { propertyId },
   } = req;
 
@@ -23,8 +23,9 @@ exports.updateAdvert = (req, res) => {
   const newAdvertObject = {
     id: advertObject.id,
     status: status || advertObject.Status,
+    description: description || advertObject.Description,
     type: type || advertObject.Type,
-    state: state || advertObject.Ttate,
+    state: state || advertObject.State,
     city: city || advertObject.City,
     address: address || advertObject.Address,
     price: price || advertObject.Price,
@@ -45,10 +46,12 @@ exports.updateAdvert = (req, res) => {
 
   return res.status(200).json({
     status: 200,
+    message: 'success',
     data: newAdvertObject,
   });
 };
 
+// mark a property as sold
 exports.markSold = (req, res) => {
   const { body: { newStatus }, params: { propertyId } } = req;
 
@@ -59,18 +62,12 @@ exports.markSold = (req, res) => {
 
   checkAdvertId(advertObject, propertyId, res);
 
-  if (!newStatus || newStatus !== 'SOLD') {
-    return res.status(400).json({
-      status: 400,
-      error: 'the newStatus value should be = SOLD',
-    });
-  }
-
   const soldObj = {
     id: advertObject.id,
     status: newStatus,
+    description: advertObject.Description,
     type: advertObject.Type,
-    state: advertObject.Ttate,
+    state: advertObject.State,
     city: advertObject.City,
     address: advertObject.Address,
     price: advertObject.Price,
@@ -91,6 +88,7 @@ exports.markSold = (req, res) => {
 
   return res.status(200).json({
     status: 200,
+    message: 'success',
     data: soldObj,
   });
 };

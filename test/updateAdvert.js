@@ -25,6 +25,7 @@ describe.only('Update', () => {
   });
   describe('PATCH', () => {
     it('should raise 200  when advert is updated', (done) => {
+      database.adverts.length = 0;
       chai.request(BASE_URL)
         .post(LOGIN_URL)
         .send(base.login_user_1)
@@ -33,7 +34,7 @@ describe.only('Update', () => {
             .post('/property') // create property
             .set('x-access-token', res.body.data.token)
             .send(base.advert_1)
-            .end((err, resp) => {
+            .end((error, resp) => {
               chai.request(BASE_URL)
                 .patch(`/property/${resp.body.data.id}`)
                 .set('x-access-token', res.body.data.token)
@@ -48,6 +49,32 @@ describe.only('Update', () => {
             });
         });
     });
+  });
+
+  it('should raise 401 for an invalid price', (done) => {
+    database.adverts.length = 0;
+    chai.request(BASE_URL)
+      .post(LOGIN_URL)
+      .send(base.login_user_1)
+      .end((err, res) => {
+        chai.request(BASE_URL)
+          .post('/property') // create property
+          .set('x-access-token', res.body.data.token)
+          .send(base.advert_1)
+          .end((error, resp) => {
+            chai.request(BASE_URL)
+              .patch(`/property/${resp.body.data.id}`)
+              .set('x-access-token', res.body.data.token)
+              .send(base.advert_2)
+              .end((err, response) => {
+                response.should.have.status(400);
+                response.body.should.be.a('object');
+                response.body.should.have.property('status');
+                response.body.should.have.property('error');
+                done();
+              });
+          });
+      });
   });
 
   it('should raise 400 when advert does not exist', (done) => {

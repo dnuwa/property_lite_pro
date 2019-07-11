@@ -34,7 +34,6 @@ describe.only('Login Authentication ', () => {
           res.body.should.be.a('object');
           res.body.should.have.property('status');
           res.body.should.have.property('data');
-          res.body.data.should.have.property('id').eql(1);
         });
 
       chai
@@ -46,7 +45,6 @@ describe.only('Login Authentication ', () => {
           res.body.should.be.a('object');
           res.body.should.have.property('status');
           res.body.should.have.property('data');
-          res.body.data.should.have.property('id').eql(1);
           done();
         });
     });

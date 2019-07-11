@@ -13,6 +13,7 @@ exports.deleteAdvert = (req, res) => {
   if (!loggedinUser) {
     return res.status(401).json({
       status: 401,
+      messsage: 'unauthorised access',
       error: 'Token is expired, please login again!',
     });
   }
@@ -23,6 +24,7 @@ exports.deleteAdvert = (req, res) => {
   if (!advertToDelete) {
     return res.status(400).json({
       status: 400,
+      message: 'bad request',
       error: `There is no property with Id: ${propertyId}`,
     });
   }
@@ -31,6 +33,7 @@ exports.deleteAdvert = (req, res) => {
   if (loggedinUser.id !== advertToDelete.created_by_staffId) {
     return res.status(401).json({
       status: 401,
+      message: 'unauthorised access',
       error: `you are not authorised to delete proprty Id: ${propertyId}`,
     });
   }
@@ -43,13 +46,13 @@ exports.deleteAdvert = (req, res) => {
     }
   });
 
-  // Delete bank adverts
+  // Delete propert adverts
   adverts.splice(index, 1);
   // Return adverts details
   return res.status(202).json({
     status: 202,
-    data: {
-      message: `Advert with Id: ${propertyId} has been successfuly deleted`,
-    },
+    message: 'succefully deleted',
+    data: `Advert with Id: ${propertyId} has been successfuly deleted`,
+
   });
 };
