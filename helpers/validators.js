@@ -54,3 +54,13 @@ exports.checkPhoneNumber = (phoneNumber, res) => {
     });
   }
 };
+
+exports.checkPrice = (amount, res) => {
+  // eslint-disable-next-line no-restricted-globals
+  if (isNaN(amount)) {
+    return res.status(400).json({
+      status: 400,
+      error: 'Please enter a valid price amount',
+    });
+  }
+};
