@@ -2,9 +2,6 @@
 import bcrypt from 'bcryptjs';
 import middleware from '../middleware';
 import { users } from '../models';
-import {
-  checkName, checkEmail, checkPassword, checkPhoneNumber, checkEmptyFields,
-} from '../helpers/validators';
 
 // create user account
 exports.signup = (req, res) => {
@@ -12,35 +9,12 @@ exports.signup = (req, res) => {
     email, firstName, lastName, password, phoneNumber, address, isAdmin,
   } = req.body;
 
-  if (checkEmptyFields(email, password, lastName, firstName, phoneNumber, res)) {
-    return checkEmptyFields(email, password, lastName, firstName, phoneNumber, res);
-  }
-
   const fisrtN = firstName.trim();
   const lastN = lastName.trim();
   const elMail = email.trim();
   const phoneN = phoneNumber.trim();
   const addre = address.trim();
   const admin = isAdmin;
-
-
-  if (checkName(fisrtN, lastN, res)) {
-    return checkName(fisrtN, lastN, res);
-  }
-
-  // Validate email
-  if (checkEmail(elMail, res)) {
-    return checkEmail(email, res);
-  }
-
-  // Validate password
-  if (checkPassword(password, res)) {
-    return checkPassword(password, res);
-  }
-
-  if (checkPhoneNumber(phoneN, res)) {
-    return checkPhoneNumber(phoneN, res);
-  }
 
   // generate user id basing on list length
   const userId = users.length + 1;
@@ -64,6 +38,7 @@ exports.signup = (req, res) => {
   if (doesEmailAlreadyExist) {
     return res.status(400).json({
       status: 400,
+      message: 'bad request',
       error: 'Email already exists, try another',
     });
   }
@@ -72,18 +47,15 @@ exports.signup = (req, res) => {
   // return the JWT token for the future API calls
   return res.status(200).json({
     status: 200,
+    message: 'success',
     data: {
       token: middleware.token(data.id),
-      id: data.id,
-      firstName: data.firstName,
-      phoneNumber: data.phoneNumber,
-      email: data.email,
-      is_admin: data.is_admin,
     },
   });
 };
 
 exports.allUsers = (req, res) => res.status(200).json({
   status: 200,
+  message: 'success',
   data: users,
 });

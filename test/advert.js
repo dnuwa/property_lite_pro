@@ -81,7 +81,7 @@ describe.only('Create an advert ', () => {
         });
     });
 
-    it('should return all adverts in an array', (done) => {
+    it('should return only available property adverts in an array', (done) => {
       chai.request(BASE_URL)
         .get('/property')
         .end((err, res) => {
@@ -90,6 +90,24 @@ describe.only('Create an advert ', () => {
           res.body.should.have.property('status');
           res.body.should.have.property('data');
           done();
+        });
+    });
+
+    it('should return all property adverts(sold, flagged and available) in an array', (done) => {
+      chai.request(BASE_URL)
+        .post(LOGIN_URL)
+        .send(base.login_user_1)
+        .end((err, res) => {
+          chai.request(BASE_URL)
+            .get('/property')
+            .set('x-access-token', res.body.data.token)
+            .end((error, resp) => {
+              resp.should.have.status(200);
+              resp.body.should.be.a('object');
+              resp.body.should.have.property('message');
+              resp.body.should.have.property('data');
+              done();
+            });
         });
     });
 
@@ -112,7 +130,7 @@ describe.only('Create an advert ', () => {
           response.should.have.status(400);
           response.body.should.be.a('object');
           response.body.should.have.property('status');
-          response.body.should.have.property('data');
+          response.body.should.have.property('error');
           done();
         });
     });
@@ -139,7 +157,7 @@ describe.only('Create an advert ', () => {
       chai.request(BASE_URL)
         .post(LOGIN_URL)
         .send(base.login_user_1)
-        .end((err, res) => {
+        .end((error, res) => {
           chai.request(BASE_URL)
             .post('/property')
             .set('x-access-token', 'jdsvjlsdjnjnvldnvnsjfvnjnnjfnnsvln')
@@ -149,6 +167,25 @@ describe.only('Create an advert ', () => {
               resp.body.should.be.a('object');
               resp.body.should.have.property('status');
               resp.body.should.have.property('message');
+              done();
+            });
+        });
+    });
+
+    it('should return a 400 when posting same advert', (done) => {
+      chai.request(BASE_URL)
+        .post(LOGIN_URL)
+        .send(base.login_user_1)
+        .end((err, res) => {
+          chai.request(BASE_URL)
+            .post('/property')
+            .set('x-access-token', res.body.data.token)
+            .send(base.advert_1)
+            .end((error, resp) => {
+              resp.should.have.status(400);
+              resp.body.should.be.a('object');
+              resp.body.should.have.property('status');
+              resp.body.should.have.property('error');
               done();
             });
         });

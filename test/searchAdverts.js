@@ -19,6 +19,7 @@ chai.should();
 describe.only('SEARCH ', () => {
   before(() => {
     database.users.length = 0; // empty user collection
+    database.adverts.length = 0;
     chai.request(BASE_URL)
       .post(SIGNUP_URL)
       .send(base.signup_user_1)
@@ -34,10 +35,10 @@ describe.only('SEARCH ', () => {
             .post('/property')
             .set('x-access-token', res.body.data.token)
             .send(base.advert_1)
-            .end((err, resp) => {
+            .end((er, resp) => {
               chai.request(BASE_URL)
                 .get(`/property/type/${resp.body.data.propertyType}`)
-                .end((err, response) => {
+                .end((error, response) => {
                   response.should.have.status(200);
                   response.body.should.be.a('object');
                   response.body.should.have.property('status');

@@ -29,7 +29,7 @@ describe.only('user signup', () => {
           res.body.should.be.a('object');
           res.body.should.have.property('status');
           res.body.should.have.property('data');
-          res.body.data.should.have.property('id');
+          res.body.data.should.have.property('token');
           done();
         });
     });
@@ -122,6 +122,17 @@ describe.only('user signup', () => {
           res.body.should.be.a('object');
           res.body.should.have.property('status');
           res.body.should.have.property('data');
+          done();
+        });
+    });
+
+    it('should raise a 404 error', (done) => {
+      chai.request(BASE_URL)
+        .post('/url')
+        .end((err, res) => {
+          res.should.have.status(404);
+          res.body.should.be.a('object');
+          res.body.should.have.property('error');
           done();
         });
     });
