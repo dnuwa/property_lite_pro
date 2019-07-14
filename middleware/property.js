@@ -19,7 +19,7 @@ exports.validateEmptyFields = (req, res, next) => {
 exports.validatePrice = (req, res, next) => {
   const { price } = req.body;
 
-  if (isNaN(price)) {
+  if ((!price.match(/^(\d*([.,](?=\d{3}))?\d+)+((?!\2)[.,]\d\d)?$/))) {
     return res.status(400).json({
       status: 400,
       message: 'bad request',

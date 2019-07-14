@@ -46,8 +46,8 @@ exports.signup = (req, res) => {
 
   // return the JWT token for the future API calls
   return res.status(200).json({
-    status: 200,
-    message: 'success',
+    status: 201,
+    message: 'user created',
     data: {
       token: middleware.token(data.id),
     },

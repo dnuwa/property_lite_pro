@@ -152,5 +152,36 @@ describe.only('Update', () => {
             });
         });
     });
+
+    it('should raise 401  when unauthorised', (done) => {
+      database.adverts.length = 0;
+      chai.request(BASE_URL)
+        .post(LOGIN_URL)
+        .send(base.login_user_1)
+        .end((err, res) => {
+          chai.request(BASE_URL)
+            .post('/property') // create property
+            .set('x-access-token', res.body.data.token)
+            .send(base.advert_1)
+            .end((err, resp) => {
+              chai.request(BASE_URL)
+                .post(SIGNUP_URL)
+                .send(base.signup_user_7)
+                .end((err, respo) => {
+                  chai.request(BASE_URL)
+                    .patch(`/property/${res.body.data.id}`)
+                    .set('x-access-token', respo.body.data.token)
+                    .send(base.updateAd)
+                    .end((err, response) => {
+                      response.should.have.status(401);
+                      response.body.should.be.a('object');
+                      response.body.should.have.property('status');
+                      response.body.should.have.property('error');
+                      done();
+                    });
+                });
+            });
+        });
+    });
   });
 });
