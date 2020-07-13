@@ -20,6 +20,14 @@ exports.updateAdvert = (req, res) => {
 
   checkAdvertId(advertObject, propertyId, res);
 
+  if (activeUser.id !== advertObject.created_by_staffId) {
+    return res.status(401).json({
+      status: 401,
+      message: 'unauthorised access',
+      error: `you are not authorised to update proprty Id: ${propertyId}`,
+    });
+  }
+
   const newAdvertObject = {
     id: advertObject.id,
     status: status || advertObject.Status,
